@@ -1,0 +1,62 @@
+dezima_castella:
+  product_category: castella
+  name: "出島カステラ"
+  contain: 16
+  price: 1200
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+single_marian:
+  product_category: marian
+  name: "マリアン単品"
+  contain: 1
+  price: 300
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+six_marian:
+  product_category: marian
+  name: "マリアン 6個入り"
+  contain: 6
+  price: 1800
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+ten_marian:
+  product_category: marian
+  name: "マリアン 10個入り"
+  contain: 10
+  price: 3000
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+single_cookie:
+  product_category: my_cookie
+  name: "クッキー単品"
+  contain: 1
+  price: 150
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+ten_cookie:
+  product_category: my_cookie
+  name: "クッキー 10個入り"
+  contain: 10
+  price: 1500
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+
+# ten_marian:
+#   product_category:
+#   name: ""
+#   contain:
+#   price:
+  # created_at: <%= Time.zone.now %>
+  # updated_at: <%= Time.zone.now %>
+
