@@ -1,0 +1,10 @@
+.product_ex
+  - @categories.zip(@products, @single_price) do |category, product, single_price|
+    .name
+      = category.name
+    .product_summary
+      = category.product_summary
+    .price
+      = product.price
+    .single_price
+      = single_price[0]&.price

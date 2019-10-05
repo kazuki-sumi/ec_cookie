@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :category do
+  resources :product_categories do
     resources :products, only: [:index]
   end
   resources :products, except: [:index]
