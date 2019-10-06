@@ -30,6 +30,7 @@ gem "dotenv-rails"
 gem "bootstrap", "~> 4.1.1"
 gem "jquery-rails"
 gem "slim-rails"
+gem "rails-i18n"
 gem "ridgepole"
 
 # Reduces boot times through caching; required in config/boot.rb
