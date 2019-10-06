@@ -1,4 +1,9 @@
 class ProductsController < ApplicationController
+  def index
+    @product = Product.where(product_category_id: params[:product_category_id])
+    @category = ProductCategory.find(params[:product_category_id])
+  end
+
   def new
     product = Product.new
   end

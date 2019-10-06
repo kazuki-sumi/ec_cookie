@@ -1,6 +1,7 @@
 .product_ex
   - @categories.zip(@products, @single_price) do |category, product, single_price|
-    .name
+    / 商品画像を名前の上に表示
+    = link_to product_category_products_path(category.id), class: "name" do
       = category.name
     .product_summary
       = category.product_summary
