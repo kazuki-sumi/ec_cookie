@@ -1,0 +1,32 @@
+header
+  #header.cleafix
+    h1#id
+      a href = "/"
+        = image_tag("logo.png", class: "header-logo")
+    .icon_cart.img
+      a href = "/carts"
+        = image_tag("cart.png", class: "cart-logo", size: "40x40")
+    #menu
+      nav
+        #globalnav.clearfix
+          ul
+            li
+              = link_to "/"
+                span このECサイトについて
+            li
+              = link_to product_categories_path
+                span お菓子一覧
+          ul
+            li
+              = link_to "/"
+                span 店舗案内・取扱店
+            li
+              = link_to "/"
+                span 新着情報
+          ul
+            li
+              = link_to "/"
+                span お問い合わせ
+            li
+              = link_to "/"
+                span マイページログイン

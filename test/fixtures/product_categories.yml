@@ -1,0 +1,34 @@
+castella:
+  name:  "カステラ"
+  product_summary: "長崎の元祖オリジナルカステラ。グラニュー糖がかかった長崎ならではの一品です。"
+  product_detail: "ほんのりとした甘さ、コク深い味わい、ふんわりとした食感、美味しさを追求した美しい色合いの長崎カステラです。"
+  expiry_date: 15
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+marian:
+  name: "マリアン"
+  product_summary: "底に薄く白餡を敷いて焼き上げた、柔らかい食感のマドレーヌです。"
+  product_detail: "封を開けると、レモンの香りが爽やかな船形のマドレーヌ。可愛い花柄のパッケージで、創業当初より長く愛されている逸品です。"
+  expiry_date: 10
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+my_cookie:
+  name: "マイクッキー"
+  product_summary: "ゆったりお茶を楽しむ“私の時間”にも、ぴったりなパッケージサイズ。"
+  product_detail: "気軽に楽しめるボリュームを袋詰めに。泉屋ならではの温かなおいしさを焼きあげたスペシャルクッキーから6種類の味をお楽しみいただけます。"
+  expiry_date: 30
+  created_at: <%= Time.zone.now %>
+  updated_at: <%= Time.zone.now %>
+
+
+# castella:
+#   name:
+#   product_summary:
+#   product_detail:
+#   expiry_date:
+  # created_at: <%= Time.zone.now %>
+  # updated_at: <%= Time.zone.now %>
