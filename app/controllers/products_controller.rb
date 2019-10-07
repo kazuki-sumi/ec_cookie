@@ -4,6 +4,12 @@ class ProductsController < ApplicationController
     @category = ProductCategory.find(params[:product_category_id])
   end
 
+  def show
+    @product = Product.find(params[:id])
+    @category = @product.product_category
+    @all_product = Product.where(product_category_id: @product.product_category_id)
+  end
+
   def new
     product = Product.new
   end
