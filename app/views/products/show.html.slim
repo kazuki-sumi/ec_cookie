@@ -17,7 +17,7 @@
         .price.tom = "￥#{@product.price}(tax in)"
     .cart_area
       .quantity.clearfix
-        = form_with scope: :post, url: carts_path do |f|
+        = form_with method: :post, url: carts_path do |f|
           .field
             = f.label :購入数
             = f.select :product_count, [1, 2, 3, 4, 5]
