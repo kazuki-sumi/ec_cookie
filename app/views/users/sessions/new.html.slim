@@ -1,6 +1,6 @@
 h3 ログイン
 
-= form_with url: user_session_path do |f|
+= form_with model: resource, url: user_session_path do |f|
   .field
     = f.label :Eメール
     = f.email_field :email, autofocus: true, autocomplete: "email"
