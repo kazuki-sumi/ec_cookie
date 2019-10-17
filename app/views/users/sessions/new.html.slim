@@ -1,0 +1,15 @@
+h3 ログイン
+
+= form_with url: user_session_path do |f|
+  .field
+    = f.label :Eメール
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+
+  .field
+    = f.label :パスワード
+    = f.password_field :password, autocomplete: "current-password"
+
+  .actions
+    = f.submit "ログインする"
+
+/= render "devise/shared/links"
