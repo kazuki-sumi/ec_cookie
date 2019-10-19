@@ -24,3 +24,7 @@ fixtures:
 
 .PHONY: reset-db
 reset-db: create-db migrate fixtures
+
+.PHONY: lint
+lint:
+	bundle exec rubocop
