@@ -11,23 +11,15 @@ header
         #globalnav.clearfix
           ul
             li
-              / - if user_signed_in?
-              /   strong = link_to current_user.name, user_path(current_user)
-              /   = link_to "プロフィール変更", edit_user_registration_path
-              /   = link_to "ログアウト", destroy_user_session_path
-              / - else
-              = link_to "会員登録", new_user_registration_path
-              /   = link_to "ログイン", new_user_session_path
-              / - end
-            li
               = link_to "/"
                 span このECサイトについて
             li
               = link_to product_categories_path
                 span お菓子一覧
             li
-              = link_to new_user_session_path
-                span ログイン
-            li
-              = link_to destroy_user_session_path, method: :delete
-                span ログアウト
+              - if user_signed_in?
+                = link_to destroy_user_session_path, method: :delete
+                  span ログアウト
+              - else
+                = link_to new_user_session_path
+                  span ログイン

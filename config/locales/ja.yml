@@ -7,7 +7,11 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  attention:
+    messages:
+      single: ※バラでご購入の場合、化粧箱にお入れすることが出来ませんので、予めご了承ください。
   date:
+    expiry_date: "賞味期限：（製造日より）%{date}日"
     abbr_day_names:
     - 日
     - 月

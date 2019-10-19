@@ -1,0 +1,39 @@
+#product_detail
+  #product_visual
+  .detail_area
+    h2.product_ttl.grt = @category.name
+    .product_ttl_ja = @product.name
+    .outline
+      .product_summary = @category.product_summary
+      .product_detail
+        p = @category.product_detail
+        p = t("attention.messages.single")
+    .limit
+      = t("date.expiry_date", date: @category.expiry_date)
+    .price_area.clearfix
+      .num.tom = @product.contain
+      .inner.clearfix
+        .ttl.grt price
+        .price.tom = "￥#{@product.price}(tax in)"
+    .cart_area
+      .quantity.clearfix
+        = form_with method: :post, url: carts_path do |f|
+          .field
+            = f.label :購入数
+            = f.select :product_count, [1, 2, 3, 4, 5]
+
+          .field.hidden_field
+            = f.hidden_field :product_id, value: @product.id
+          .action
+            = f.submit :買い物カゴに入れる
+#related
+  .ttl.tom
+    span 関連商品
+  .inner
+    ul
+      - @all_product.each do |product|
+        li
+          = link_to product_path(product) do
+            /ここに画像
+            dl = product.name
+            dd = "#{product.price}(税込)"
