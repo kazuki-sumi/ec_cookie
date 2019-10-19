@@ -5,7 +5,8 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    raise "この商品は存在しません" unless set_product
+
     @category = @product.product_category
     @all_product = Product.where(product_category_id: @product.product_category_id)
   end
@@ -19,6 +20,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+    def set_product
+      @product = Product.find_by(id: params[:id])
+    end
 
     def product_params
       params.require(:product).permit(:category_id, :name, :contain, :price)
