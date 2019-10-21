@@ -1,21 +1,31 @@
-table.basket
-  thead
-    tr
-      th 商品名
-      th 値段
-      th 個数
-      th 小計
-      th
-  tbody
-    tr
-      th 名前が入る
-      th 値段が入る
-      th 個数が入る
-      th 合計dayo!
-      th 削除
-  tfoot
-    tr
-     th 合計金額1000万
+#order_items
+  .header
+    h3 カートの中身
+  - if @cart
+    table
+      thead
+        tr
+          th 商品名
+          th 値段
+          th 個数
+          th 小計
+          th
+      tbody
+        - @cart_items.zip(@products) do |item, product|
+          tr
+            th = link_to product.name, product_path(product)
+            th = product.price
+            th = item.product_count
+            th = product.price * item.product_count
+            th 削除
+      tfoot
+        tr
+          th = "合計：￥#{@total_price}"
+  - else
+    p 買い物カゴに商品はありません
 
 .btn-wrap
   .btn-wrap-back.clearfix
+    p 買い物に戻る
+    p カゴの中身を空にする
+    p 購入手続きへ進む

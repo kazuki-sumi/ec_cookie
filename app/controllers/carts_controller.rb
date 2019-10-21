@@ -1,4 +1,16 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
+
+  def index
+    @cart = Cart.find_by(user_id: current_user.id, paid: false)
+    return unless @cart
+
+    @cart_items = @cart.cart_items
+    @products = @cart.products
+    @total_price = 0
+    @cart_items.zip(@products) {|item, product| @total_price += product.price * item.product_count}
+  end
+
   def create
     raise "この商品は存在しません" unless Product.find_by(id: params[:product_id])
 
