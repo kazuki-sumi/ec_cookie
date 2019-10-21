@@ -1,8 +1,9 @@
 class CartsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
 
   def index
     @cart = Cart.find_by(user_id: current_user.id, paid: false)
-    return "カートは存在しません" unless @cart
+    return unless @cart
 
     @cart_items = @cart.cart_items
     @products = @cart.products

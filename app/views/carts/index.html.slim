@@ -1,25 +1,28 @@
 #order_items
   .header
     h3 カートの中身
-  table
-    thead
-      tr
-        th 商品名
-        th 値段
-        th 個数
-        th 小計
-        th
-    tbody
-      - @cart_items.zip(@products) do |item, product|
+  - if @cart
+    table
+      thead
         tr
-          th = product.name
-          th = product.price
-          th = item.product_count
-          th = product.price * item.product_count
-          th 削除
-    tfoot
-      tr
-      th = "合計：￥#{@total_price}"
+          th 商品名
+          th 値段
+          th 個数
+          th 小計
+          th
+      tbody
+        - @cart_items.zip(@products) do |item, product|
+          tr
+            th = link_to product.name, product_path(product)
+            th = product.price
+            th = item.product_count
+            th = product.price * item.product_count
+            th 削除
+      tfoot
+        tr
+          th = "合計：￥#{@total_price}"
+  - else
+    p 買い物カゴに商品はありません
 
 .btn-wrap
   .btn-wrap-back.clearfix
