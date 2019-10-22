@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   end
   resources :products, except: [:index]
   resources :users, only: [:show]
-  resources :carts
+  resources :carts do
+    resources :cart_items, only: [:create, :update]
+  end
 end

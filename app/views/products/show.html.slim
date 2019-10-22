@@ -17,15 +17,12 @@
         .price.tom = "￥#{@product.price}(tax in)"
     .cart_area
       .quantity.clearfix
-        = form_with method: :post, url: carts_path do |f|
-          .field
-            = f.label :購入数
-            = f.select :product_count, [1, 2, 3, 4, 5]
-
-          .field.hidden_field
-            = f.hidden_field :product_id, value: @product.id
-          .action
-            = f.submit :買い物カゴに入れる
+        - if @cart && @item
+          = render "form", model: @item, url: cart_cart_item_path(@item), method: :patch
+        - elsif @cart
+          = render "form", model: @item, url: cart_cart_items_path(@cart), method: :post
+        - else
+          = render "form", model: @cart, url: carts_path, method: :post
 #related
   .ttl.tom
     span 関連商品
