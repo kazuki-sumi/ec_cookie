@@ -1,7 +1,7 @@
 #order_items
   .header
     h3 カートの中身
-  - if @cart
+  - if @cart && @cart_items.present?
     table
       thead
         tr

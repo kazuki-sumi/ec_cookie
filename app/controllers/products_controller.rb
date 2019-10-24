@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
 
     @category = @product.product_category
     @all_product = Product.where(product_category_id: @product.product_category_id)
+    @cart = Cart.find_by(user_id: current_user&.id, paid: false)
+    @item = CartItem.find_by(product_id: @product.id, cart_id: @cart&.id)
   end
 
   def new
