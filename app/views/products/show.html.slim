@@ -18,7 +18,7 @@
     .cart_area
       .quantity.clearfix
         - if @cart && @item
-          = render "form", model: @item, url: cart_cart_item_path(@item), method: :patch
+          = render "form", model: @item, url: cart_cart_item_path(@cart, @item), method: :patch
         - elsif @cart
           = render "form", model: @item, url: cart_cart_items_path(@cart), method: :post
         - else
