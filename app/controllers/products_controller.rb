@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    raise "この商品は存在しません" unless set_product
+    render template: "errors/application", layout: false and return unless set_product
 
     @category = @product.product_category
     @all_product = Product.where(product_category_id: @product.product_category_id)
