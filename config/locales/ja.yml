@@ -7,6 +7,9 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  users:
+    session:
+      signed_in: "ログインしました。"
   attention:
     messages:
       single: ※バラでご購入の場合、化粧箱にお入れすることが出来ませんので、予めご了承ください。

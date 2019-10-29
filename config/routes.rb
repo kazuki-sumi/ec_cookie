@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :carts do
     resources :cart_items, only: [:create, :update]
   end
+
+  get "*unmatched_route", to: "application#routing_error"
 end

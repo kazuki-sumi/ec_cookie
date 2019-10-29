@@ -12,7 +12,7 @@ class CartsController < ApplicationController
   end
 
   def create
-    raise "この商品は存在しません" unless Product.find_by(id: params[:product_id])
+    render "errors/application", layout: false and return unless Product.find_by(id: params[:product_id])
 
     ActiveRecord::Base.transaction do
       @cart = current_user.carts.create!(paid: false)
