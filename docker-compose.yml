@@ -1,9 +1,9 @@
-version: "3.3"
+version: "3"
 services:
   web:
     build:
-      context: ./docker/web
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: docker/web/Dockerfile
     ports:
       - "3000:3000"
     command: bundle exec rails s -p 3000 -b "0.0.0.0"
