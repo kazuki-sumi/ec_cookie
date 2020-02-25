@@ -14,11 +14,11 @@ default: &default
 
 development:
   <<: *default
-  database: cookie_development #<%= ENV["DATABASE_NAME"] %>
-  username: root #<%= ENV["DATABASE_USERNAME"] %>
-  host: db #<%= ENV["DATABASE_HOST"] %>
-  port: 3306 #<%= ENV["DATABASE_PORT"] %>
-  password: password
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  port: <%= ENV["DATABASE_PORT"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
 
 
 # Warning: The database defined as "test" will be erased and
@@ -26,11 +26,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: cookie_test #<%= ENV["TEST_DATABASE_NAME"] %>
-  username: root #<%= ENV["TEST_DATABASE_USERNAME"] %>
-  host: db #<%= ENV["TEST_DATABASE_HOST"] %>
-  port: 3306 #<%= ENV["TEST_DATABASE_PORT"] %>
-  password: password
+  database: <%= ENV["TEST_DATABASE_NAME"] %>
+  username: <%= ENV["TEST_DATABASE_USERNAME"] %>
+  host: <%= ENV["TEST_DATABASE_HOST"] %>
+  port: <%= ENV["TEST_DATABASE_PORT"] %>
+  password: <%= ENV["TEST_DATABASE_PASSWORD"] %>
 
 
 production:
