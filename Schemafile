@@ -20,10 +20,6 @@ create_table "users", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAU
   t.string   "unlock_token",           limit: 191,                           collation: "utf8mb4_bin", comment: "アカウントロック解除用トークン"
   t.datetime "locked_at",              precision: 6,                                                   comment: "アカウントロック日時"
   t.string   "phone",                  limit:  20, default: "", null: false,                           comment: "電話番号"
-  t.string   "postcode",               limit: 191, default: "", null: false,                           comment: "郵便番号"
-  t.integer  "prefecture_id",          unsigned: true,                                                 comment: "都道府県"
-  t.string   "city",                   limit: 191, default: "", null: false,                           comment: "市町村"
-  t.string   "street_number",          limit: 191, default: "", null: false,                           comment: "番地"
   t.integer  "gender",                                                                                 comment: "性別 0: 男性, 1: 女性"
   t.date     "birthday",                                                                               comment: "誕生日"
   t.boolean  "subscribed_to_mail_magazine",        default: false, null: false,                        comment: "メルマガ購読設定 0: 購読しない, 1: 購読する"
@@ -34,6 +30,14 @@ create_table "users", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAU
   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   t.index ["prefecture_id"], name: "index_users_on_prefecture_id", using: :btree
+end
+
+create_table "user_address", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer  "user_id",    null: false, unsigned: true
+  t.string   "postcode",               limit: 191, default: "", null: false,                           comment: "郵便番号"
+  t.integer  "prefecture_id",          unsigned: true,                                                 comment: "都道府県"
+  t.string   "city",                   limit: 191, default: "", null: false,                           comment: "市町村"
+  t.string   "street_number",          limit: 191, default: "", null: false,                           comment: "番地"
 end
 
 create_table "products", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
