@@ -50,6 +50,13 @@ create_table "products", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DE
   t.index ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
 end
 
+create_table "products", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer "product_id", null: false
+  t.string "image", null: false, comment: "画像の保存先のpath"
+  t.datetime "created_at",             precision: 6,                null: false
+  t.datetime "updated_at",             precision: 6,                null: false
+end
+
 create_table "product_categories", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
   t.string  "name",            limit: 191,   default: "", null: false, comment: "カテゴリー名"
   t.text    "product_summary", limit: 65535,              null: false, comment: "商品の簡単な概要"
@@ -87,4 +94,27 @@ create_table "cart_items", id: :bigint, unsigned: true, options: "ENGINE=InnoDB 
   t.datetime "updated_at",             precision: 6,                null: false
   t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
   t.index ["product_id"], name: "index_cart_items_on_product_id", using: :btree
+end
+
+create_table "taxes", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer "tax_rate",                                             null: false
+  t.datetime "expiration_date", defalt: "", comment: "有効期限"
+  t.datetime "created_at",             precision: 6,                null: false
+  t.datetime "updated_at",             precision: 6,                null: false
+end
+
+create_table "cards", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer "card_number",      null: false
+  t.datetime "expiration_date", null: false
+  t.string "name",              null: false
+  t.integer "brand",            null: false, commnet "カードブランド"
+  t.datetime "created_at",             precision: 6,                null: false
+  t.datetime "updated_at",             precision: 6,                null: false
+end
+
+create_table "cards", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer "cart_id",       null: false, unsigned: true
+  t.integer "user_id",       null: false
+  t.datetime "created_at",             precision: 6,                null: false
+  t.datetime "updated_at",             precision: 6,                null: false
 end
