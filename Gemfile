@@ -27,6 +27,7 @@ gem "uglifier", ">= 1.3.0"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem "annotate"
 gem "bootstrap", "~> 4.1.1"
 gem "devise"
 gem "dotenv-rails"
