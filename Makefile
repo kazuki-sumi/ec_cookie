@@ -23,7 +23,7 @@ fixtures:
 	bundle exec rails db:fixtures:load RAILS_ENV=test
 
 .PHONY: reset-db
-reset-db: create-db migrate fixtures
+reset-db: create-db migrate #fixtures
 
 .PHONY: lint
 lint:
