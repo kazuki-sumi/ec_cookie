@@ -29,7 +29,6 @@ create_table "users", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAU
   t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
-  t.index ["prefecture_id"], name: "index_users_on_prefecture_id", using: :btree
 end
 
 create_table "user_address", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -67,7 +66,6 @@ create_table "products", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DE
   t.datetime "delete_date",                precision: 6
   t.datetime "created_at",    null: false, precision: 6
   t.datetime "updated_at",    null: false, precision: 6
-  t.index ["product_category_id"], name: "index_products_on_product_category_id", using: :btree
 end
 
 create_table "products_image", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -101,7 +99,7 @@ create_table "order", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAU
   t.integer  "postcode",      null: false, unsigned: true
   t.integer  "prefecture",                 unsigned: true, comment: "都道府県"
   t.string   "city",          null: false, limit: 191,     comment: "市町村"
-  t.string   "street_number", null: false  limit: 191,     comment: "番地"
+  t.string   "street_number", null: false, limit: 191,     comment: "番地"
   t.datetime "delivery_date", null: false, precision: 6,   comment: "出荷日時"
   t.datetime "arrival_date",  null: false, precision: 6,   comment: "到着日時"
   t.datetime "created_at",    null: false, precision: 6
@@ -115,19 +113,17 @@ create_table "order_product", id: :bigint, unsigned: true, options: "ENGINE=Inno
   t.integer  "price",      null: false, unsigned: true
   t.datetime "created_at", null: false,                precision: 6, comment: "購入日付に相当"
   t.datetime "updated_at", null: false,                precision: 6
-  t.index ["order_id"],   name: "index_order_product_on_order_id",     using: :btree
-  t.index ["product_id"], name: "index_order_histories_on_product_id", using: :btree
+  t.index ["order_id"],   name: "index_order_product_on_order_id",   using: :btree
+  t.index ["product_id"], name: "index_order_product_on_product_id", using: :btree
 end
 
 # sessionで判断するようにする
 create_table "carts", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
   t.integer  "tax_id",      null: false, unsigned: true
-  t.boolean  "state",       null: false, defalt: false, comment: "支払い済みか 0: 未決算, 1: 決算済み"
-  t.integer  "total_price,  null: false, defalt: 0
-  t.datetime "order_date",             precision: 6,               comment: "注文日"
-  t.datetime "created_at",             precision: 6,                null: false
-  t.datetime "updated_at",             precision: 6,                null: false
-  t.index ["user_id"], name: "index_carts_on_user_id", using: :btree
+  t.integer  "state",       null: false, unsigned: true, default: 0, comment: "支払い済みか 0: 未決算, 1: 決算済み"
+  t.datetime "order_date",               precision: 6,              comment: "注文日"
+  t.datetime "created_at",  null: false, precision: 6
+  t.datetime "updated_at",  null: false, precision: 6
 end
 
 create_table "cart_items", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -142,25 +138,19 @@ end
 
 create_table "taxes", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
   t.integer "tax_rate",                                             null: false
-  t.datetime "expiration_date", defalt: "", comment: "有効期限"
+  t.datetime "expiration_date", comment: "有効期限"
   t.datetime "created_at",             precision: 6,                null: false
   t.datetime "updated_at",             precision: 6,                null: false
 end
 
 create_table "cards", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  t.integer "user_id",          null: false, unsigned: true
   t.integer "card_number",      null: false
   t.datetime "expiration_date", null: false
-  t.string "name",              null: false
-  t.integer "brand",            null: false, commnet "カードブランド"
-  t.datetime "created_at",             precision: 6,                null: false
-  t.datetime "updated_at",             precision: 6,                null: false
-end
-
-create_table "cards", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-  t.integer "cart_id",       null: false, unsigned: true
-  t.integer "user_id",       null: false
-  t.datetime "created_at",             precision: 6,                null: false
-  t.datetime "updated_at",             precision: 6,                null: false
+  t.string "name",              null: false, comment: "カード名義名"
+  t.integer "brand",            null: false, comment: "カードブランド"
+  t.datetime "created_at",      null: false, precision: 6
+  t.datetime "updated_at",      null: false, precision: 6
 end
 
 # クーポンテーブル
