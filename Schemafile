@@ -51,13 +51,6 @@ create_table "admin_users", id: :bigint, unsigned: true, options: "ENGINE=InnoDB
   t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
 end
 
-create_table "product_group", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-  t.string "name",         null: false
-  t.string "path"
-  t.datetime "created_at", null: false, precision: 6
-  t.datetime "updated_at", null: false, precision: 6
-end
-
 create_table "products", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
   t.string  "name",           null: false, default: "", limit: 191
   t.integer "contain",        null: false,                            comment: "内容量"
@@ -76,9 +69,8 @@ create_table "products_image", id: :bigint, unsigned: true, options: "ENGINE=Inn
 end
 
 create_table "categories", id: :bigint, unsigned: true, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-  t.integer "product_group_id", unsigned: true,            null: false
   t.string  "name",             limit: 191,   default: "", null: false, comment: "カテゴリー名"
-  t.text    "product_summary",  limit: 65535,              null: false, comment: "商品の簡単な概要"
+  t.text    "category_summary", limit: 65535,                           comment: "商品の簡単な概要"
   t.string "path",                                                      comment: "カテゴリーのパス"
   t.datetime "created_at",      precision: 6,              null: false
   t.datetime "updated_at",      precision: 6,              null: false

@@ -1,0 +1,47 @@
+h3 大カテゴリー登録
+
+= form_with(model: @category, method: :post) do |f|
+  .field
+    = f.label :カテゴリー名
+    = f.text_field :name, placeholder: "家具、ベッド・寝具等"
+
+  .action
+    = f.submit "カテゴリー作成"
+br
+
+h3 中カテゴリー登録
+
+= form_with(model: @category, method: :post) do |f|
+  .field
+    = f.label :カテゴリー名
+    = f.text_field :name, placeholder: "ソファー、布団・ベッド等"
+
+  .field
+    = f.label :カテゴリー概要
+    = f.text_area :category_summary, placeholder: "カテゴリーの説明"
+
+  .field
+    = f.label :所属させる大カテゴリー
+    = f.select :path, @large_categories.compact, prompt: "選択する"
+
+  .action
+    = f.submit "カテゴリー作成"
+br
+
+h3 小カテゴリー登録
+
+= form_with(model: @category, method: :post) do |f|
+  .field
+    = f.label :カテゴリー名
+    = f.text_field :name, placeholder: "ソファベンチ、脚付きマットレス、"
+
+  .field
+    = f.label :カテゴリー概要
+    = f.text_area :category_summary, placeholder: "カテゴリー説明"
+
+  .field
+    = f.label :所属する中カテゴリー
+    = f.select :path, @medium_categories.compact, prompt: "選択する"
+
+  .action
+    = f.submit "カテゴリー作成"
