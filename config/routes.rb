@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "product_categories#index"
+  root "home#index"
   devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions" }
   # mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :categories
