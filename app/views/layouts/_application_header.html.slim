@@ -14,8 +14,8 @@ header
               = link_to "/"
                 span このECサイトについて
             li
-              = link_to product_categories_path
-                span お菓子一覧
+              / = link_to product_categories_path
+              span お菓子一覧
             li
               - if user_signed_in?
                 = link_to destroy_user_session_path, method: :delete
