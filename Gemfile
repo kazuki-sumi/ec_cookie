@@ -28,7 +28,7 @@ gem "uglifier", ">= 1.3.0"
 # gem 'image_processing', '~> 1.2'
 
 gem "annotate"
-gem "bootstrap", "~> 4.1.1"
+gem "bootstrap", "~> 4.3.1"
 gem "devise"
 gem "dotenv-rails"
 gem "html2slim"
